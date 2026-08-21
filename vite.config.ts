@@ -5,6 +5,8 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
+    base: '/silverhand/', // 👈 MUST match your GitHub repo name exactly
+    plugins: [react()],
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
@@ -20,3 +22,12 @@ export default defineConfig(() => {
     },
   };
 });
+
+
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+export default defineConfig({
+  base: '/YOUR_REPOSITORY_NAME/', // 👈 MUST match your GitHub repo name exactly
+  plugins: [react()],
+})
