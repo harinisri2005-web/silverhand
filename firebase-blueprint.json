@@ -1,0 +1,95 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile in SilverHands",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "username": { "type": "string" },
+        "passcode": { "type": "string" },
+        "fullName": { "type": "string" },
+        "role": { "type": "string" },
+        "preferredLanguage": { "type": "string" },
+        "avatarUrl": { "type": "string" },
+        "bio": { "type": "string" },
+        "location": { "type": "object" },
+        "skills": { "type": "array" },
+        "rating": { "type": "number" },
+        "reviewsCount": { "type": "number" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "username", "fullName", "role"]
+    },
+    "Listing": {
+      "title": "Listing",
+      "description": "Artisan skill or service listing",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "providerId": { "type": "string" },
+        "providerName": { "type": "string" },
+        "title": { "type": "string" },
+        "titleEnglish": { "type": "string" },
+        "description": { "type": "string" },
+        "category": { "type": "string" },
+        "price": { "type": "number" },
+        "isBarter": { "type": "boolean" },
+        "available": { "type": "boolean" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "providerId", "title", "category"]
+    },
+    "Message": {
+      "title": "Message",
+      "description": "Direct chat message between neighbor and artisan",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "conversationId": { "type": "string" },
+        "senderId": { "type": "string" },
+        "senderName": { "type": "string" },
+        "originalText": { "type": "string" },
+        "translatedText": { "type": "string" },
+        "timestamp": { "type": "string" }
+      },
+      "required": ["id", "conversationId", "senderId", "originalText"]
+    },
+    "MarketplaceEvent": {
+      "title": "MarketplaceEvent",
+      "description": "Community flea market, meetup and bazaar event",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "date": { "type": "string" },
+        "time": { "type": "string" },
+        "locationName": { "type": "string" },
+        "organizerId": { "type": "string" },
+        "organizerName": { "type": "string" },
+        "stallsCapacity": { "type": "number" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "title", "date", "time", "locationName", "organizerId"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profiles"
+    },
+    "/listings/{listingId}": {
+      "schema": "Listing",
+      "description": "Artisan craft and repair listings"
+    },
+    "/messages/{messageId}": {
+      "schema": "Message",
+      "description": "Direct communication messages"
+    },
+    "/events/{eventId}": {
+      "schema": "MarketplaceEvent",
+      "description": "Community meetup and marketplace events"
+    }
+  }
+}
